@@ -74,6 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <input type="text" id="PIN" name="PIN" required>
         <button type="submit">Reserve PIN</button>
     </form>
-    <center><a href="http://secapp.qooarx.com/monitor.php">Go back to Admin Panel</a></center>
+    <center><a href="http://yourhost.com/monitor.php">Go back to Admin Panel</a></center>
 </body>
 </html>

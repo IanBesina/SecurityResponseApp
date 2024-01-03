@@ -107,7 +107,7 @@ $result = $conn->query("SELECT * FROM Incidence");
     ?>
 </table>
 <br><br><br>
-<center><a href="http://secapp.qooarx.com/reserve.php">Create a PIN for New User(s)</a>     |     <a href="http://secapp.qooarx.com/deactivate.php">Deactivate Users</a></center>
+<center><a href="http://yourhost.com/reserve.php">Create a PIN for New User(s)</a>     |     <a href="http://yourhost.com/deactivate.php">Deactivate Users</a></center>
 
 <script>
     function flagIncident(dateTime) {
