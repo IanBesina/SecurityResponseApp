@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = new mysqli("localhost", "id21735645_root", "Wh4t3ver!", "id21735645_secapp0a");
+$conn = new mysqli("localhost", "db_user", "db_password", "dbname");
 
 // Check connection
 if ($conn->connect_error) {
@@ -64,6 +64,7 @@ $result = $conn->query("SELECT * FROM Incidence");
             cursor: pointer;
         }
     </style>
+    <meta http-equiv="refresh" content="20"> <!-- Add this line for refreshing every 30 seconds -->
 </head>
 <body>
 
@@ -107,7 +108,7 @@ $result = $conn->query("SELECT * FROM Incidence");
     ?>
 </table>
 <br><br><br>
-<center><a href="http://yourhost.com/reserve.php">Create a PIN for New User(s)</a>     |     <a href="http://yourhost.com/deactivate.php">Deactivate Users</a></center>
+<center><a href="http://secapp.qooarx.com/reserve.php">Create a PIN for New User(s)</a>     |     <a href="http://secapp.qooarx.com/deactivate.php">Deactivate Users</a></center>
 
 <script>
     function flagIncident(dateTime) {
@@ -116,9 +117,9 @@ $result = $conn->query("SELECT * FROM Incidence");
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 alert("Incident flagged successfully!");
-                location.reload(); // Immediate refresh after flagging
-                }
-            };
+                location.reload(); // Refresh the page after flagging
+            }
+        };
         xhttp.open("GET", "flag_incident.php?dateTime=" + dateTime, true);
         xhttp.send();
     }
@@ -149,18 +150,7 @@ $result = $conn->query("SELECT * FROM Incidence");
         xhttp.open("GET", "get_last_row.php", true);
         xhttp.send();
     }
-
-    function refreshTable() {
-        location.reload(); // Refresh upon calling this function
-        }
-
-    // Set up auto-refresh every 30 seconds
-    setInterval(refreshTable, 30000);
-
-    // Initial load of the table
-    refreshTable();
 </script>
-
 
 </body>
 </html>
