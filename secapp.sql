@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 03, 2024 at 11:08 AM
+-- Host: localhost
+-- Generation Time: Jan 05, 2024 at 09:07 PM
 -- Server version: 10.5.20-MariaDB
 -- PHP Version: 7.3.33
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Incidence` (
   `DateTime` text NOT NULL,
-  `Latitude` decimal(10,0) NOT NULL,
-  `Longitude` decimal(10,0) NOT NULL,
+  `Latitude` text NOT NULL,
+  `Longitude` text NOT NULL,
   `Name` text NOT NULL,
   `Age` int(3) NOT NULL,
   `Gender` text NOT NULL,
@@ -54,6 +54,13 @@ CREATE TABLE `Users` (
   `MobileNumber` text NOT NULL,
   `IsActive` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `Users` (`PIN`, `Name`, `Age`, `Gender`, `MobileNumber`, `IsActive`) VALUES
+('ABC123', 'None', 1, 'None', '0', 'False');
 
 --
 -- Indexes for dumped tables
