@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Check if required parameter "PIN" is set
-    if (isset($_GET['PIN'])) {
+    // Check if required parameter "MobileNumber" is set
+    if (isset($_GET['MobileNumber'])) {
         // Retrieve form data
         $PIN = $_GET['PIN'];
 
@@ -14,15 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         }
 
         // Use prepared statement to prevent SQL injection
-        $sql = $conn->prepare("UPDATE Users SET IsActive = 'False' WHERE PIN = ?");
-        $sql->bind_param("s", $PIN);
+        $sql = $conn->prepare("DELETE FROM Users WHERE MobileNumber = ?");
+        $sql->bind_param("s", $MobileNumber);
 
         if ($sql->execute()) {
             // Check if any rows were affected
             if ($sql->affected_rows > 0) {
                 echo 'User Deactivated Successfully';
             } else {
-                echo 'No records found for the given PIN.';
+                echo 'No records found for the given Mobile Number.';
             }
         } else {
             echo 'Error: ' . $sql->error;
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $sql->close();
         $conn->close();
     } else {
-        echo 'Missing required parameter: PIN.';
+        echo 'Required: Mobile Number.';
     }
 }
 ?>
@@ -69,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 </head>
 <body>
     <form action="deactivate.php" method="get">
-        <label for="PIN">Enter PIN:</label>
-        <input type="text" id="PIN" name="PIN" required>
+        <label for="MobileNumber">Enter Mobile Number:</label>
+        <input type="text" id="MobileNumber" name="MobileNumber" required>
         <button type="submit">Deactivate User</button>
     </form>
-    <center><a href="http://yourhost.com/monitor.php">Go back to Admin Panel</a></center>
+    <center><a href="http://secapp.qooarx.com/monitor.php">Go back to Admin Panel</a></center>
 </body>
 </html>
