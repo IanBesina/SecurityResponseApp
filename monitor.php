@@ -65,6 +65,34 @@ $result = $conn->query("SELECT * FROM Incidence");
         }
     </style>
     <meta http-equiv="refresh" content="20"> <!-- Add this line for refreshing every 30 seconds -->
+    <script>
+        function playAlarm() {
+            // Create an audio element
+            var audio = new Audio('http://secapp.qooarx.com/alarm.mp3');
+
+            // Play the audio after a user interaction (e.g., click)
+            document.addEventListener('click', function () {
+                audio.play();
+                }, { once: true });
+            }
+
+        // Function to check for the word "Unflagged" and play the alarm
+        function checkAndPlayAlarm() {
+            var statusCells = document.querySelectorAll('td:nth-child(8)'); // Assuming Status is the 8th column
+
+            statusCells.forEach(function (cell) {
+                if (cell.textContent.trim() === 'Unflagged') {
+                    playAlarm();
+                    return; // Stop checking once an "Unflagged" status is found
+                    }
+                });
+            }
+
+        // Trigger the checkAndPlayAlarm function when the page is loaded
+        window.onload = function () {
+            checkAndPlayAlarm();
+            };
+    </script>
 </head>
 <body>
 
@@ -159,4 +187,3 @@ $result = $conn->query("SELECT * FROM Incidence");
 // Close database connection
 $conn->close();
 ?>
-
