@@ -52,17 +52,6 @@ $result = $conn->query("SELECT * FROM Incidence");
             cursor: pointer;
         }
 
-        #map-button {
-            float: right;
-            padding: 10px;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-        }
     </style>
     <meta http-equiv="refresh" content="20"> <!-- Add this line for refreshing every 30 seconds -->
     <script>
@@ -96,7 +85,6 @@ $result = $conn->query("SELECT * FROM Incidence");
 </head>
 <body>
 
-<button id="map-button" onclick="openMap()">Open Map</button>
 <center><h1>Security Response Unit Admin Panel</h1></center>
 <table>
     <tr>
@@ -152,32 +140,6 @@ $result = $conn->query("SELECT * FROM Incidence");
         xhttp.send();
     }
 
-    function openMap() {
-        // AJAX request to get the last row from the Incidence table
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                var data = JSON.parse(this.responseText);
-
-                // Check if data is available
-                if (data.length > 0) {
-                    // Get the last row
-                    var lastRow = data[data.length - 1];
-
-                    // Extract Latitude and Longitude
-                    var latitude = lastRow.Latitude;
-                    var longitude = lastRow.Longitude;
-
-                    // Open the map with the retrieved values
-                    window.open("https://www.openstreetmap.org/?mlat=" + latitude + "&mlon=" + longitude + "&zoom=20", "_blank");
-                } else {
-                    alert("No incidents found to open on the map.");
-                }
-            }
-        };
-        xhttp.open("GET", "get_last_row.php", true);
-        xhttp.send();
-    }
 </script>
 
 </body>

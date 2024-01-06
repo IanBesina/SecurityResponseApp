@@ -3,10 +3,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Check if required parameter "MobileNumber" is set
     if (isset($_GET['MobileNumber'])) {
         // Retrieve form data
-        $PIN = $_GET['PIN'];
+        $MobileNumber = $_GET['MobileNumber'];
 
         // Database connection
-        $conn = new mysqli("localhost", "db_user", "db_password", "dbname");
+        $conn = new mysqli("localhost", "db_user", "db_password!", "dbname");
 
         // Check connection
         if ($conn->connect_error) {
@@ -76,3 +76,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <center><a href="http://secapp.qooarx.com/monitor.php">Go back to Admin Panel</a></center>
 </body>
 </html>
+
